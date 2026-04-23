@@ -1,10 +1,10 @@
 # Laboratory Work 1
-Course: Software Design and Documentation
-Student: Тимченко Наталія, Б-121-24-3-ПІ
-Variant: 6 — Message Editing & Deletion
+**Course:** Software Design and Documentation
+**Student:** Каріна Рекул, [Твоя група]
+**Variant:** 6 — Message Editing & Deletion
 
 ## Context
-The goal is to design a messenger system that supports basic messaging capabilities with an emphasis on consistency and auditability. The system must allow users to edit sent messages and delete messages ("for me" vs "for everyone").
+The goal is to design a messenger system that supports basic messaging capabilities with an emphasis on **consistency and auditability**. The system must allow users to edit sent messages and delete messages ("for me" vs "for everyone").
 
 ---
 
@@ -23,11 +23,13 @@ graph LR
   MessageService --> Queue[Message Queue]
   Queue --> DeliveryService[Delivery Service]
   DeliveryService --> Client
+```
+
 ---
 
 ## Part 2 — Sequence Diagram (25%)
 
-Scenario: User A edits an already sent message.
+**Scenario:** User A edits an already sent message.
 
 ```mermaid
 sequenceDiagram
@@ -52,12 +54,13 @@ sequenceDiagram
   API-->>Client: 200 OK
   
   Queue-->>B: push update (UI shows "edited")
+```
 
 ---
 
 ## Part 3 — State Diagram (20%)
 
-Object: Message
+**Object:** `Message`
 
 ```mermaid
 stateDiagram-v2
@@ -78,6 +81,7 @@ stateDiagram-v2
     [*] --> DeletedForMe
     [*] --> DeletedForEveryone
   }
+```
 
 ---
 
@@ -92,10 +96,10 @@ Accepted
 Users require the ability to edit and delete messages. We need to decide whether to physically modify/remove records in the database or keep a history of all changes.
 
 ## Decision
-We will implement Soft Delete for message removal and an Append-Only Audit Log for message edits.
+We will implement **Soft Delete** for message removal and an **Append-Only Audit Log** for message edits.
 1. When a user deletes a message, the database record is not dropped. Instead, a boolean flag is set.
-2. When a user edits a message, the Main DB gets the new text, while the original text is moved to an Audit Log DB.
+2. When a user edits a message, the `Main DB` gets the new text, while the original text is moved to an `Audit Log DB`.
 
 ## Consequences
-+ Pros: Preserves data integrity, supports future moderation features.
-- Cons: Increases database storage size.
++ **Pros:** Preserves data integrity, supports future moderation features.
+- **Cons:** Increases database storage size.
