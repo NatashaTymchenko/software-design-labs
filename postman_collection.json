@@ -1,0 +1,64 @@
+{
+  "info": {
+    "name": "Messenger API (Lab 2 - Variant 6)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create User",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": { "raw": "https://localhost:7253/users", "host": ["https://localhost", "7253"], "path": ["users"] },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Alice\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Send Message",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": { "raw": "https://localhost:7253/messages", "host": ["https://localhost", "7253"], "path": ["messages"] },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"conversationId\": 1,\n  \"senderId\": 1,\n  \"text\": \"Hello, this is my first message!\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Get Conversation Messages",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "https://localhost:7253/conversations/1/messages", "host": ["https://localhost", "7253"], "path": ["conversations", "1", "messages"] }
+      }
+    },
+    {
+      "name": "Edit Message (Variant 6)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": { "raw": "https://localhost:7253/messages/1", "host": ["https://localhost", "7253"], "path": ["messages", "1"] },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"This message has been EDITED!\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Delete Message (Variant 6)",
+      "request": {
+        "method": "DELETE",
+        "url": { "raw": "https://localhost:7253/messages/1", "host": ["https://localhost", "7253"], "path": ["messages", "1"] }
+      }
+    }
+  ]
+}
