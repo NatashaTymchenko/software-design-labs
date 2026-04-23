@@ -1,6 +1,6 @@
 # Laboratory Work 1
 **Course:** Software Design and Documentation
-**Student:** Каріна Рекул, [Твоя група]
+**Student:** Тимченко Наталія, Б-121-24-3-ПІ
 **Variant:** 6 — Message Editing & Deletion
 
 ## Context
