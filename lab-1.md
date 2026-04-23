@@ -10,6 +10,7 @@ The goal is to design a messenger system that supports basic messaging capabilit
 
 ## Part 1 — Component Diagram (30%)
 
+```mermaid
 graph LR
   Client[Client / Mobile] --> API[HTTP API]
   API --> Auth[Auth Service]
@@ -22,13 +23,13 @@ graph LR
   MessageService --> Queue[Message Queue]
   Queue --> DeliveryService[Delivery Service]
   DeliveryService --> Client
-
 ---
 
 ## Part 2 — Sequence Diagram (25%)
 
 Scenario: User A edits an already sent message.
 
+```mermaid
 sequenceDiagram
   participant A as User A
   participant Client
@@ -58,6 +59,7 @@ sequenceDiagram
 
 Object: Message
 
+```mermaid
 stateDiagram-v2
   [*] --> Created
   Created --> Sent
